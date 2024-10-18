@@ -1,0 +1,40 @@
+package org.howard.edu.lsp.midterm.q4;
+
+import java.util.HashMap;
+
+public class Question4 {
+    // Static method to find common key/value pairs between two HashMaps
+    public static int commonKeyValuePairs(HashMap<String, String> map1, HashMap<String, String> map2) {
+        if (map1.isEmpty() || map2.isEmpty()) {
+            return 0;
+        }
+
+        int count = 0;
+        for (String key : map1.keySet()) {
+            if (map2.containsKey(key) && map1.get(key).equals(map2.get(key))) {
+                count++; // Both key and value are common in both maps
+            }
+        }
+        return count;
+    }
+
+    // Main method to test the MapUtilities class
+    public static void main(String[] args) {
+        HashMap<String, String> hashmap1 = new HashMap<>();
+        hashmap1.put("Alice", "Healthy");
+        hashmap1.put("Mary", "Ecstatic");
+        hashmap1.put("Bob", "Happy");
+        hashmap1.put("Chuck", "Fine");
+        hashmap1.put("Felix", "Sick");
+
+        HashMap<String, String> hashmap2 = new HashMap<>();
+        hashmap2.put("Mary", "Ecstatic");
+        hashmap2.put("Felix", "Healthy");
+        hashmap2.put("Ricardo", "Superb");
+        hashmap2.put("Tam", "Fine");
+        hashmap2.put("Bob", "Happy");
+
+        System.out.println("Number of common key/value pairs is: " +
+            Question4.commonKeyValuePairs(hashmap1, hashmap2)); // Output: 2
+    }
+}
