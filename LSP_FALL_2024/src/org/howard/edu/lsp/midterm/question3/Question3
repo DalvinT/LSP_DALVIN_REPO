@@ -1,0 +1,49 @@
+package org.howard.edu.lsp.midterm.question3;
+
+import java.util.HashMap;
+
+public class Question3 {
+    // A map to store the candidates and their votes
+    private HashMap<String, Integer> candidates;
+
+    // Constructor
+    public Question3() {
+        candidates = new HashMap<>();
+    }
+
+    // Add a candidate to the list
+    public void addCandidate(String name) {
+        candidates.put(name, 0); // Each candidate starts with 0 votes
+    }
+
+    // Cast a vote for a candidate
+    public void castVote(String name) {
+        if (candidates.containsKey(name)) {
+            candidates.put(name, candidates.get(name) + 1); // Increment the vote count
+        } else {
+            System.out.println("Candidate not found.");
+        }
+    }
+
+    // Override toString() to print the number of votes each candidate has received
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (String candidate : candidates.keySet()) {
+            result.append(candidate).append(": ").append(candidates.get(candidate)).append(" votes\n");
+        }
+        return result.toString();
+    }
+
+    // Main method to test the VotingMachine class
+    public static void main(String[] args) {
+        VotingMachine vm = new VotingMachine();
+        vm.addCandidate("Alsobrooks");
+        vm.castVote("Alsobrooks");
+        vm.addCandidate("Hogan");
+        vm.castVote("Alsobrooks");
+
+        System.out.println(vm); // Outputs the votes for each candidate
+    }
+}
+
