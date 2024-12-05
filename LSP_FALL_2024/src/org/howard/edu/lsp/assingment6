@@ -1,0 +1,67 @@
+package org.howard.edu.lsp.assignment6;
+
+import org.howard.edu.lsp.assignment5.intergerset; // Use the incorrect spelling
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class IntegerSetTest {
+    private intergerset set1;
+    private intergerset set2;
+
+    @BeforeEach
+    public void setUp() {
+        set1 = new intergerset(); // Use the incorrectly spelled class name
+        set2 = new intergerset();
+    }
+
+    @Test
+    @DisplayName("Test case for clear()")
+    public void testClear() {
+        set1.add(1);
+        set1.add(2);
+        set1.clear();
+        assertEquals(0, set1.length());
+        assertTrue(set1.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Test case for length()")
+    public void testLength() {
+        assertEquals(0, set1.length());
+        set1.add(1);
+        set1.add(2);
+        assertEquals(2, set1.length());
+    }
+
+    @Test
+    @DisplayName("Test case for add()")
+    public void testAdd() {
+        set1.add(1);
+        set1.add(1);  // Duplicate element
+        assertEquals(1, set1.length());
+    }
+
+    @Test
+    @DisplayName("Test case for remove()")
+    public void testRemove() {
+        set1.add(1);
+        set1.add(2);
+        set1.remove(1);
+        assertFalse(set1.contains(1));
+        assertEquals(1, set1.length());
+    }
+
+    @Test
+    @DisplayName("Test case for union()")
+    public void testUnion() {
+        set1.add(1);
+        set1.add(2);
+        set2.add(2);
+        set2.add(3);
+
+        set1.union(set2);
+        assertTrue(set1.contains(3));
+        assertEquals(3, set
